@@ -18,4 +18,4 @@ Rules:
 2. Constants - Capital Letters
 3. Proper Comments
 4. Functions End Seperated by commented Hypen //------------------------------------------------------------------- 
-5. 
+5. Variable Name Should be camelCase
