@@ -93,7 +93,7 @@
         android:layout_height="59dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="6dp"
-        android:drawableStart="@drawable/passwordLogo"
+        android:drawableStart="@drawable/passwordlogo"
         android:ems="10"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
@@ -106,7 +106,6 @@
         android:id="@+id/viewPassword"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="none"
         android:onClick="viewPassword"
         android:contentDescription="@string/view_Password"
         app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
@@ -115,7 +114,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextPassword"
         app:layout_constraintTop_toTopOf="@+id/editTextPassword"
         app:layout_constraintVertical_bias="0.652"
-        app:srcCompat="@drawable/viewPassword"
+        app:srcCompat="@drawable/viewpassword"
         tools:ignore="UsingOnClickInXml" />
 
     <CheckBox
@@ -168,7 +167,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="none"
         android:text="or continue with"
         android:textStyle="italic"
         android:padding="12dp"
