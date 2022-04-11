@@ -93,7 +93,7 @@
         android:layout_height="59dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="6dp"
-        android:drawableStart="@drawable/passwordlogo"
+        android:drawableStart="@drawable/password_logo"
         android:ems="10"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextPassword"
         app:layout_constraintTop_toTopOf="@+id/editTextPassword"
         app:layout_constraintVertical_bias="0.652"
-        app:srcCompat="@drawable/viewpassword"
+        app:srcCompat="@drawable/view_password"
         tools:ignore="UsingOnClickInXml" />
 
     <CheckBox
