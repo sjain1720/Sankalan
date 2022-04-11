@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Sankalan</string>
+    <string name="event_name">Event Name</string>
+    <string name="member_1">Member 1</string>
+    <string name="full_name1">Full Name</string>
+    <string name="member_2">Member 2</string>
+    <string name="full_name2">Full Name</string>
+    <string name="member_3">Member 3</string>
+    <string name="full_name3">Full Name</string>
+    <string name="member_4">Member 4</string>
+    <string name="full_name4">Full Name</string>
 </resources>
