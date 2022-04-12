@@ -12,3 +12,10 @@ This is the time when everyone works together as a team and is dedicated towards
 The sole reason for this event is to nurture qualities of participants.
 
 This App is for registration and Event details of Sankalan.
+
+Rules:
+1. Ids - Seperated by underSore
+2. Constants - Capital Letters
+3. Proper Comments
+4. Functions End Seperated by commented Hypen //------------------------------------------------------------------- 
+5. Variable Name Should be camelCase
