@@ -1,4 +1,4 @@
-package com.example.sankalan.fragments
+package com.example.sankalan.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.sankalan.R
+import com.example.sankalan.databinding.FragmentSignUpBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +23,10 @@ class SignUpFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
+    //variable
+    lateinit var signupBinding:FragmentSignUpBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +40,21 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
+        signupBinding = FragmentSignUpBinding.inflate(inflater)
+        return signupBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val name = signupBinding.FullName
+        val mobile = signupBinding.mobileNum
+        val institute = signupBinding.CollegeName
+        val year = signupBinding.courseYear
+        val course = signupBinding.CourseName
+        val email = signupBinding.Email
+        val password = signupBinding.createPassword
+        val signupButton = signupBinding.signUp
+
     }
 
     companion object {
