@@ -1,12 +1,21 @@
 package com.example.sankalan.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.sankalan.R
+import com.example.sankalan.activities.MainActivity
 import com.example.sankalan.databinding.FragmentSignUpBinding
+import com.example.sankalan.ui.login.data.LoggedInUser
+import com.example.sankalan.ui.login.model.AuthenticationViewModel
+import com.example.sankalan.ui.login.model.AuthenticationViewModelFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,9 +35,12 @@ class SignUpFragment : Fragment() {
 
     //variable
     lateinit var signupBinding:FragmentSignUpBinding
+    lateinit var signupViewmodel:AuthenticationViewModel
+    lateinit var data:LoggedInUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -41,6 +53,7 @@ class SignUpFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         signupBinding = FragmentSignUpBinding.inflate(inflater)
+        signupViewmodel = ViewModelProvider(this,AuthenticationViewModelFactory()).get(AuthenticationViewModel::class.java)
         return signupBinding.root
     }
 
@@ -54,6 +67,64 @@ class SignUpFragment : Fragment() {
         val email = signupBinding.Email
         val password = signupBinding.createPassword
         val signupButton = signupBinding.signUp
+        //viewmodel = ViewModelProvider(this,AuthenticationViewModelFactory()).get(AuthenticationViewModel::class.java)
+
+
+        mobile.addTextChangedListener {
+            if (it.toString().length != 10){
+                mobile.error = getString(R.string.invalid_mobile)
+            }
+        }
+        year.addTextChangedListener {
+            if(it.toString().toLong() !in 1..4){
+                year.error = getString(R.string.invalid_course_year)
+            }
+        }
+        email.addTextChangedListener {
+            signupViewmodel.onSignupDataChange(email = it.toString(), password = password.text.toString())
+        }
+        password.addTextChangedListener {
+            signupViewmodel.onSignupDataChange(email = email.text.toString(), password = it.toString())
+        }
+        signupButton.isEnabled = true
+        signupViewmodel.signUpForm.observe(viewLifecycleOwner, Observer {
+            signupButton.isEnabled = it.isValid //temp
+
+            if(it.emailError!=null){
+                email.error = getString(it.emailError)
+            }
+            if(it.passError!=null){
+                password.error = getString(it.passError)
+            }
+
+        })
+        signupViewmodel.user.observe(viewLifecycleOwner, Observer {
+            if(it!=null){
+                startActivity(Intent(activity, MainActivity::class.java))
+                activity?.finish()
+            }
+        })
+        signupButton.setOnClickListener {
+            if(name.text.isNotEmpty()&&
+            mobile.text.isNotEmpty()&&
+            institute.text.isNotEmpty()&&
+            year.text.isNotEmpty()&&
+            course.text.isNotEmpty()&&
+            email.text.isNotEmpty()&&
+            password.text.isNotEmpty()){
+                 data = LoggedInUser(
+                    name = name.text.toString(),
+                    mobile = mobile.text.toString(),
+                    institute = institute.text.toString(),
+                    year = year.text.toString().toLong(),
+                    course = course.text.toString(),
+                )
+                signupViewmodel.signUp(email.text.toString(),password.text.toString(),data)
+
+            }else{
+                Toast.makeText(context,"Required All Fields.",Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 

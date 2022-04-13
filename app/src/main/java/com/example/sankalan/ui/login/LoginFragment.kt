@@ -1,7 +1,9 @@
 package com.example.sankalan.ui.login
 
+
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.sankalan.R
+import com.example.sankalan.activities.MainActivity
 import com.example.sankalan.databinding.FragmentLoginBinding
 import com.example.sankalan.ui.login.model.AuthenticationViewModel
 import com.example.sankalan.ui.login.model.AuthenticationViewModelFactory
@@ -66,8 +69,16 @@ class LoginFragment : Fragment(),View.OnClickListener {
         //ViewModel
         authViewModel = ViewModelProvider(this,AuthenticationViewModelFactory()).get(AuthenticationViewModel::class.java)
         //Observe Changes
+        authViewModel.user.observe(viewLifecycleOwner, Observer {
+            if(it!=null){
+                startActivity(Intent(activity, MainActivity::class.java))
+                activity?.finish()
+            }
+        })
         authViewModel.loginForm.observe(viewLifecycleOwner, Observer {
-            loginButton.isEnabled = it.isValid
+            if(it.isValid){
+                loginButton.isEnabled = true
+            }
             if(it.emailError!=null){
                 emailEdit.error = getString(it.emailError)
             }
@@ -86,8 +97,13 @@ class LoginFragment : Fragment(),View.OnClickListener {
 
         loginButton.setOnClickListener {
             loading.visibility = View.VISIBLE
-            // login
-            //change activiti
+            try{
+                authViewModel.login(email = emailEdit.text.toString(), password = passEdit.text.toString())
+            }catch (e:Exception){
+                Log.w("Error in Text string","Empty String.")
+            }finally {
+                loading.visibility = View.GONE
+            }
             Toast.makeText(context, "LOGIN S",Toast.LENGTH_SHORT).show()
         }
         registerText.setOnClickListener {
