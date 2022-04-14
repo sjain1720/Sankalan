@@ -2,14 +2,19 @@ package com.example.sankalan.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.sankalan.R
 import com.example.sankalan.activities.MainActivity
 import com.example.sankalan.databinding.FragmentSignUpBinding
@@ -37,10 +42,11 @@ class SignUpFragment : Fragment() {
     lateinit var signupBinding:FragmentSignUpBinding
     lateinit var signupViewmodel:AuthenticationViewModel
     lateinit var data:LoggedInUser
+    private var navController: NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        signupViewmodel = ViewModelProvider(this,AuthenticationViewModelFactory()).get(AuthenticationViewModel::class.java)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -53,7 +59,6 @@ class SignUpFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         signupBinding = FragmentSignUpBinding.inflate(inflater)
-        signupViewmodel = ViewModelProvider(this,AuthenticationViewModelFactory()).get(AuthenticationViewModel::class.java)
         return signupBinding.root
     }
 
@@ -64,11 +69,14 @@ class SignUpFragment : Fragment() {
         val institute = signupBinding.CollegeName
         val year = signupBinding.courseYear
         val course = signupBinding.CourseName
-        val email = signupBinding.Email
+        val email = signupBinding.enterEmail
         val password = signupBinding.createPassword
-        val signupButton = signupBinding.signUp
+        val loginHere = signupBinding.loginHere
+        val signUpButton = view.findViewById<Button>(R.id.signUp)
+        val loading = view.findViewById<ProgressBar>(R.id.loading)
         //viewmodel = ViewModelProvider(this,AuthenticationViewModelFactory()).get(AuthenticationViewModel::class.java)
 
+        navController = Navigation.findNavController(view)
 
         mobile.addTextChangedListener {
             if (it.toString().length != 10){
@@ -76,19 +84,23 @@ class SignUpFragment : Fragment() {
             }
         }
         year.addTextChangedListener {
-            if(it.toString().toLong() !in 1..4){
+            try{
+                if(it.toString().toLong()!in 1..4){
+                    year.error = getString(R.string.invalid_course_year)
+                }
+            }catch (e:Exception){
                 year.error = getString(R.string.invalid_course_year)
             }
         }
         email.addTextChangedListener {
-            signupViewmodel.onSignupDataChange(email = it.toString(), password = password.text.toString())
+            signupViewmodel.onLoginDataChange(email = it.toString(), password = password.text.toString())
         }
         password.addTextChangedListener {
-            signupViewmodel.onSignupDataChange(email = email.text.toString(), password = it.toString())
+            signupViewmodel.onLoginDataChange(email = email.text.toString(), password = it.toString())
         }
-        signupButton.isEnabled = true
-        signupViewmodel.signUpForm.observe(viewLifecycleOwner, Observer {
-            signupButton.isEnabled = it.isValid //temp
+
+        signupViewmodel.loginForm.observe(viewLifecycleOwner, Observer {
+            signUpButton.isEnabled = it.isValid
 
             if(it.emailError!=null){
                 email.error = getString(it.emailError)
@@ -104,25 +116,31 @@ class SignUpFragment : Fragment() {
                 activity?.finish()
             }
         })
-        signupButton.setOnClickListener {
-            if(name.text.isNotEmpty()&&
-            mobile.text.isNotEmpty()&&
-            institute.text.isNotEmpty()&&
-            year.text.isNotEmpty()&&
-            course.text.isNotEmpty()&&
-            email.text.isNotEmpty()&&
-            password.text.isNotEmpty()){
-                 data = LoggedInUser(
-                    name = name.text.toString(),
-                    mobile = mobile.text.toString(),
-                    institute = institute.text.toString(),
-                    year = year.text.toString().toLong(),
-                    course = course.text.toString(),
-                )
-                signupViewmodel.signUp(email.text.toString(),password.text.toString(),data)
-
+        loginHere.setOnClickListener {
+            navController?.navigate(R.id.action_signUpFragment_to_loginFragment)
+        }
+        signUpButton.setOnClickListener {
+            if(name.text.isNullOrBlank() ||
+                course.text.isNullOrBlank() ||
+                institute.text.isNullOrBlank() ||
+                year.text.isNullOrBlank()||
+                mobile.text.isNullOrBlank()||
+                email.text.isNullOrBlank()||
+                    password.text.isNullOrBlank()){
+                Toast.makeText(context,"Require ALl Fields",Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(context,"Required All Fields.",Toast.LENGTH_SHORT).show()
+                data = LoggedInUser(name = name.text.toString(),
+                course = course.text.toString(),
+                institute = institute.text.toString(),
+                year = year.text.toString().toLong(),
+                mobile = mobile.text.toString())
+                try{
+                    loading.visibility = View.VISIBLE
+                    signupViewmodel.signUp(email = email.text.toString(), password = password.text.toString(),data = data)
+                }catch (e:Exception){
+                    loading.visibility = View.INVISIBLE
+
+                }
             }
         }
 

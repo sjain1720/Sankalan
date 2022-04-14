@@ -4,11 +4,12 @@ package com.example.sankalan.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,7 +28,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class LoginFragment : Fragment(),View.OnClickListener {
+class LoginFragment : Fragment(), View.OnClickListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,18 +42,23 @@ class LoginFragment : Fragment(),View.OnClickListener {
     }
 
     //Variables
-    lateinit var LoginFragmentBinding:FragmentLoginBinding
-    lateinit var authViewModel:AuthenticationViewModel
-    private var navController:NavController? = null
-
+    lateinit var LoginFragmentBinding: FragmentLoginBinding
+    lateinit var authViewModel: AuthenticationViewModel
+    private var navController: NavController? = null
+    lateinit var popUpForgotPassWord: PopupWindow
+    lateinit var popupView: View
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        popupView = inflater.inflate(R.layout.forgot_password, null)
+        val width = LinearLayout.LayoutParams.MATCH_PARENT
+        val height = LinearLayout.LayoutParams.MATCH_PARENT
         // Inflate the layout for this fragment
         LoginFragmentBinding = FragmentLoginBinding.inflate(inflater)
+        popUpForgotPassWord = PopupWindow(popupView, width, height, true)
         return LoginFragmentBinding.root
     }
 
@@ -64,53 +70,89 @@ class LoginFragment : Fragment(),View.OnClickListener {
         val loginButton = LoginFragmentBinding.login
         val registerText = LoginFragmentBinding.registerHere
         val loading = LoginFragmentBinding.loading
+        val forgotPassword = LoginFragmentBinding.forgotPassword
+        val showPasswordIcon = LoginFragmentBinding.viewPassword
         navController = Navigation.findNavController(view)
 
         //ViewModel
-        authViewModel = ViewModelProvider(this,AuthenticationViewModelFactory()).get(AuthenticationViewModel::class.java)
+        authViewModel = ViewModelProvider(
+            this,
+            AuthenticationViewModelFactory()
+        ).get(AuthenticationViewModel::class.java)
         //Observe Changes
         authViewModel.user.observe(viewLifecycleOwner, Observer {
-            if(it!=null){
+            if (it != null) {
                 startActivity(Intent(activity, MainActivity::class.java))
                 activity?.finish()
             }
         })
         authViewModel.loginForm.observe(viewLifecycleOwner, Observer {
-            if(it.isValid){
-                loginButton.isEnabled = true
-            }
-            if(it.emailError!=null){
+            loginButton.isEnabled = it.isValid
+
+            if (it.emailError != null) {
                 emailEdit.error = getString(it.emailError)
             }
-            if(it.passError!=null){
+            if (it.passError != null) {
                 passEdit.error = getString(it.passError)
             }
         })
 
         //Change in text Listeners
         emailEdit.addTextChangedListener {
-            authViewModel.onLoginDataChange(email = it.toString(), password = passEdit.text.toString())
+            authViewModel.onLoginDataChange(
+                email = it.toString(),
+                password = passEdit.text.toString()
+            )
         }
-        passEdit.addTextChangedListener{
-            authViewModel.onLoginDataChange(email = emailEdit.text.toString(), password = it.toString())
+        passEdit.addTextChangedListener {
+            authViewModel.onLoginDataChange(
+                email = emailEdit.text.toString(),
+                password = it.toString()
+            )
         }
 
         loginButton.setOnClickListener {
             loading.visibility = View.VISIBLE
-            try{
-                authViewModel.login(email = emailEdit.text.toString(), password = passEdit.text.toString())
-            }catch (e:Exception){
-                Log.w("Error in Text string","Empty String.")
-            }finally {
+            try {
+                authViewModel.login(
+                    email = emailEdit.text.toString(),
+                    password = passEdit.text.toString()
+                )
+            } catch (e: Exception) {
+                Log.w("Error in Text string", "Empty String.")
+            } finally {
                 loading.visibility = View.GONE
             }
-            Toast.makeText(context, "LOGIN S",Toast.LENGTH_SHORT).show()
         }
         registerText.setOnClickListener {
             // signup
             // change fragment
             onClick(it)
         }
+        forgotPassword.setOnClickListener {
+            popUpForgotPassWord.showAtLocation(getView(), Gravity.CENTER, 0, 0)
+        }
+        val confirmEmail = popupView.findViewById<Button>(R.id.emailConfirm)
+        val forgotEmail = popupView.findViewById<EditText>(R.id.emailAddressForgot)
+        forgotEmail.addTextChangedListener {
+            if (!authViewModel.isValidEmail(it.toString())) {
+                forgotEmail.error = getString(R.string.invalid_email)
+            }
+        }
+        confirmEmail.setOnClickListener {
+            //firebase forgot Password
+            val emailForgot = forgotEmail.text.toString()
+            if (emailForgot.isNotEmpty() && authViewModel.isValidEmail(emailForgot)) {
+                //
+            } else {
+                Toast.makeText(context, "Email Not Valid", Toast.LENGTH_SHORT).show()
+            }
+            popUpForgotPassWord.dismiss()
+        }
+
+    }
+
+    private fun ForgotPassWordPopUp() {
 
     }
 

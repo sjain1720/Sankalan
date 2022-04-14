@@ -41,13 +41,15 @@ class AuthenticationRepository {
                     //success in login.
                     firebaseUser.postValue(auth.currentUser)
                     uploadUserData(auth.currentUser?.uid, data)
+                    Log.w("SignUp Sucess", "${it}")
+
                 } else {
                     //failed login.
-                    Log.w("Login Failed", "${it.exception}")
+                    Log.w("SignUp Failed", "${it.exception}")
                 }
             }
             .addOnFailureListener {
-                Log.w("Login Failed", "${it}")
+                Log.w("SignUp Failed", "${it}")
             }
 
 

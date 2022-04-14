@@ -58,7 +58,7 @@ class AuthenticationViewModel(private val repository: AuthenticationRepository):
     }
 
 
-    private fun isValidEmail(email:String):Boolean{
+     fun isValidEmail(email:String):Boolean{
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
     private fun isValidPassword(password: String):Boolean{
