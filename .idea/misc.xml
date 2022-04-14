@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_round_btn.xml" value="0.1945" />
+        <entry key="app/src/main/res/drawable/ic_layer_one.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1945" />
+        <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_edit_my_profile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_my_profile.xml" value="0.31690826416015627" />
         <entry key="app/src/main/res/layout/activity_my_team.xml" value="0.18614130434782608" />
