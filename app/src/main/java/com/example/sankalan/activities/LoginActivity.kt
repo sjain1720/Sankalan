@@ -7,6 +7,7 @@ import com.example.sankalan.R
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_activity)
+        setContentView(R.layout.activity_edit_my_profile)
+
     }
 }
