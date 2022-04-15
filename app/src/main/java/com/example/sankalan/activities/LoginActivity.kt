@@ -13,6 +13,7 @@ class LoginActivity : AppCompatActivity(),LoginFragmentHandlers {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -24,5 +25,6 @@ class LoginActivity : AppCompatActivity(),LoginFragmentHandlers {
 
     override fun changeFragment() {
         TODO("Not yet implemented")
+
     }
 }
