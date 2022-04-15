@@ -6,19 +6,25 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/MyProfile"
-            android:id="@+id/myProfileFragment"/>
+            android:id="@+id/myProfileFragment"
+            android:icon="@drawable/ic_baseline_supervised_user_circle_24"
+            android:title="@string/MyProfile" />
         <item
             android:id="@+id/myEventsFragment"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_baseline_event_note_24"
             android:title="@string/MyEvents" />
-        <item android:title="@string/MyTeam"
-            android:id="@+id/myTeamFragment"/>
-        <item android:title="@string/ScoreBoard"
-            android:id="@+id/scoreboardFragment"/>
-        <item android:title="@string/HelpandFeedBack"
-            android:id="@+id/helpFragment"/>
+        <item
+            android:id="@+id/myTeamFragment"
+            android:icon="@drawable/ic_baseline_group_24"
+            android:title="@string/MyTeam" />
+        <item
+            android:id="@+id/scoreboardFragment"
+            android:icon="@drawable/ic_baseline_score_24"
+            android:title="@string/ScoreBoard" />
+        <item
+            android:id="@+id/helpFragment"
+            android:icon="@drawable/ic_baseline_help_outline_24"
+            android:title="@string/HelpandFeedBack" />
     </group>
 
 </menu>
