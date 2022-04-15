@@ -63,7 +63,8 @@
     <string name="action_settings">Settings</string>
     <string name="empty_edtit_text">Required</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_my_profile">My Profile</string>
+    <string name="menu_my_teams">My Teamss</string>
+    <string name="menu_reg_events">Registered Events</string>
+    <string name="menu_scoreboard">ScoreBoard</string>
 </resources>
