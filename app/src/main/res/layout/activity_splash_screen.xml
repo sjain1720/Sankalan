@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     tools:context=".activities.SplashScreen">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="dept title"
+        app:srcCompat="@drawable/dept_border" />
+
+    <ImageView
+        android:id="@+id/rotator_one_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="rotating"
+        app:srcCompat="@drawable/group_one" />
+
+    <ImageView
+        android:id="@+id/rotator_two_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="rotating"
+        app:srcCompat="@drawable/group_two" />
+
+    <ImageView
+        android:id="@+id/rotator_three_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="rotating"
+        app:srcCompat="@drawable/group_three" />
+
+    <ImageView
+        android:id="@+id/rotator_four_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="rotating"
+        app:srcCompat="@drawable/group_four" />
+
+    <ImageView
+        android:id="@+id/rotator_five_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="rotating"
+        app:srcCompat="@drawable/sankaln_name" />
+
+
+</RelativeLayout>
