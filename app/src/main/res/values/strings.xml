@@ -81,4 +81,7 @@
     <string name="MyTeam">My Team</string>
     <string name="ScoreBoard">ScoreBoard</string>
     <string name="HelpandFeedBack">Help/FeedBack</string>
+    <string name="AboutUs">About Us</string>
+    <string name="gallery">Gallery</string>
+    <string name="events">Events</string>
 </resources>

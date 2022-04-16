@@ -136,10 +136,10 @@ class SignUpFragment : Fragment() {
                 mobile = mobile.text.toString())
                 try{
                     loading.visibility = View.VISIBLE
+
                     signupViewmodel.signUp(email = email.text.toString(), password = password.text.toString(),data = data)
                 }catch (e:Exception){
                     loading.visibility = View.INVISIBLE
-
                 }
             }
         }

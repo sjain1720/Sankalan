@@ -178,7 +178,8 @@
                 android:drawableStart="@drawable/phone"
                 android:ems="10"
                 android:hint="@string/Enter_Mobile_Num"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textColorHint="#757575" />
 
             <TextView
                 android:id="@+id/Email"
@@ -242,6 +243,7 @@
                  />
         </LinearLayout>
     </ScrollView>
+
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="wrap_content"

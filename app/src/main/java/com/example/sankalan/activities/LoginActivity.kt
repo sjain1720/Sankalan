@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.example.sankalan.databinding.LoginActivityBinding
 import com.example.sankalan.interfaces.LoginFragmentHandlers
 
-class LoginActivity : AppCompatActivity(),LoginFragmentHandlers {
+class LoginActivity : AppCompatActivity(){
 
 
     lateinit var binding: LoginActivityBinding
@@ -19,12 +19,4 @@ class LoginActivity : AppCompatActivity(),LoginFragmentHandlers {
 
     }
 
-    override fun changeActivity() {
-        //startActivity(Intent(this))
-    }
-
-    override fun changeFragment() {
-        TODO("Not yet implemented")
-
-    }
 }

@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/drawable/background_round_btn.xml" value="0.1" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
+        <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/drawable/ic_baseline_supervised_user_circle_24.xml" value="0.1" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/drawable/ic_layer_one.xml" value="0.1" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/drawable/ic_layer_two.xml" value="0.126" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/activity_drawer.xml" value="0.264" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/forgot_password.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/fragment_about_us.xml" value="0.18297101449275363" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/fragment_help.xml" value="0.275" />
+        <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/fragment_home.xml" value="0.1337386018237082" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/fragment_login.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/fragment_my_profile.xml" value="0.1337386018237082" />
         <entry key="..\:/Users/navik/Documents/GitHub/Sankalan/app/src/main/res/layout/fragment_my_team.xml" value="0.18297101449275363" />

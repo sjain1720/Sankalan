@@ -5,17 +5,18 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_event_24"
-        android:title="Events"
+        android:title="@string/events"
         app:showAsAction="always" />
     <item
         android:id="@+id/galleryFragment"
         android:icon="@drawable/ic_baseline_image_24"
-        android:title="Item"
+        android:title="@string/gallery"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/aboutFragment"
+        android:id="@+id/aboutUsFragment"
         android:icon="@drawable/ic_baseline_info_24"
-        android:title="About Us"
+
+        android:title="@string/AboutUs"
         app:showAsAction="always" />
 </menu>

@@ -15,7 +15,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.sankalan.R
 import com.example.sankalan.activities.MainActivity
 import com.example.sankalan.databinding.FragmentLoginBinding
@@ -44,8 +43,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
     //Variables
     lateinit var LoginFragmentBinding: FragmentLoginBinding
     lateinit var authViewModel: AuthenticationViewModel
-    private var navController: NavController? = null
     lateinit var popUpForgotPassWord: PopupWindow
+    private var navController: NavController? = null
     lateinit var popupView: View
 
 
@@ -120,7 +119,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 )
             } catch (e: Exception) {
                 Log.w("Error in Text string", "Empty String.")
-            } finally {
                 loading.visibility = View.GONE
             }
         }
