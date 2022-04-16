@@ -9,12 +9,17 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import com.example.sankalan.MainViewModel
 import com.example.sankalan.R
 import com.example.sankalan.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    //ViewModel
+    lateinit var mainViewModel:MainViewModel
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -36,6 +41,8 @@ class MainActivity : AppCompatActivity() {
          appBarConfiguration = AppBarConfiguration(navControl.graph,binding.drawerLayout)
         setupActionBarWithNavController(navControl,binding.drawerLayout)
         binding.navView.setupWithNavController(navControl)
+    //View model
+    mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
     }
 
