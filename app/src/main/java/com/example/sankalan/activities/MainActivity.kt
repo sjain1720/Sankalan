@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     lateinit var bottom:BottomNavigationView
-
+//    lateinit var viewModelData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

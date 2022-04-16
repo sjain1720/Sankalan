@@ -1,10 +1,9 @@
 package com.example.sankalan.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sankalan.databinding.LoginActivityBinding
-import com.example.sankalan.interfaces.LoginFragmentHandlers
+
 
 class LoginActivity : AppCompatActivity(){
 

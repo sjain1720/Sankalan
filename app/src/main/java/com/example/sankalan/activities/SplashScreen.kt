@@ -19,21 +19,6 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-        supportActionBar?.hide()
-
-        val rotationOne: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_one)
-        findViewById<ImageView>(R.id.rotator_one_iv).startAnimation(rotationOne)
-        val rotationTwo: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_two)
-        findViewById<ImageView>(R.id.rotator_two_iv).startAnimation(rotationTwo)
-        val rotationThree: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_three)
-        findViewById<ImageView>(R.id.rotator_three_iv).startAnimation(rotationThree)
-        val rotationFour: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_four)
-        findViewById<ImageView>(R.id.rotator_four_iv).startAnimation(rotationFour)
-
         val handler = Handler()
         handler.postDelayed(Runnable {
             //The following code will execute after the 5 seconds.
