@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import com.example.sankalan.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -21,6 +24,16 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         supportActionBar?.hide()
+
+        val rotationOne: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_one)
+        findViewById<ImageView>(R.id.rotator_one_iv).startAnimation(rotationOne)
+        val rotationTwo: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_two)
+        findViewById<ImageView>(R.id.rotator_two_iv).startAnimation(rotationTwo)
+        val rotationThree: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_three)
+        findViewById<ImageView>(R.id.rotator_three_iv).startAnimation(rotationThree)
+        val rotationFour: Animation? = AnimationUtils.loadAnimation(this, R.anim.rotator_four)
+        findViewById<ImageView>(R.id.rotator_four_iv).startAnimation(rotationFour)
+
         val handler = Handler()
         handler.postDelayed(Runnable {
             //The following code will execute after the 5 seconds.
@@ -31,7 +44,7 @@ class SplashScreen : AppCompatActivity() {
                 ignored.printStackTrace()
             }
 
-        }, 1000)
+        }, 5000)
 
     }
 
