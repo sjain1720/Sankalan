@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item
-    android:id="@+id/navigation_home"
-    android:icon="@drawable/home"
-    android:title="@string/home"
-    />
 
-<item
-    android:id="@+id/navigation_gallery"
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    android:title="@string/gallery"
-    android:icon="@drawable/gallery"
-    />
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_baseline_event_24"
+        android:title="@string/events"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/galleryFragment"
+        android:icon="@drawable/ic_baseline_image_24"
+        android:title="@string/gallery"
+        app:showAsAction="always" />
 
-<item
-    android:id="@+id/navigation_about_us"
-    android:icon="@drawable/about_us"
-    android:title="@string/about_us"
-    />
+    <item
+        android:id="@+id/aboutUsFragment"
+        android:icon="@drawable/ic_baseline_info_24"
+
+        android:title="@string/AboutUs"
+        app:showAsAction="always" />
 </menu>

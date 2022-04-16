@@ -6,14 +6,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/register_here2"
+        android:id="@+id/loginHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="24dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="sign_in"
         android:text="@string/login_here"
         android:textColor="@color/royal_purple"
         android:textSize="20sp"
@@ -83,7 +82,8 @@
                 android:drawableStart="@drawable/name"
                 android:ems="10"
                 android:hint="@string/Enter_Name"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColorHint="#757575" />
 
             <TextView
                 android:id="@+id/CollegeNameTextView"
@@ -106,7 +106,8 @@
                 android:drawableStart="@drawable/college"
                 android:ems="10"
                 android:hint="@string/College_Name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="#757575" />
 
             <TextView
                 android:id="@+id/CourseTextView"
@@ -129,7 +130,8 @@
                 android:drawableStart="@drawable/course"
                 android:ems="10"
                 android:hint="@string/Enter_course"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="#757575" />
 
             <TextView
                 android:id="@+id/YearOfCourseTextView"
@@ -152,7 +154,8 @@
                 android:drawableStart="@drawable/course_year"
                 android:ems="10"
                 android:hint="@string/Enter_Course_year"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColorHint="#757575" />
 
             <TextView
                 android:id="@+id/MobileTextView"
@@ -175,7 +178,8 @@
                 android:drawableStart="@drawable/phone"
                 android:ems="10"
                 android:hint="@string/Enter_Mobile_Num"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textColorHint="#757575" />
 
             <TextView
                 android:id="@+id/Email"
@@ -230,14 +234,24 @@
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="14dp"
-                android:onClick="signUpAccount"
                 android:text="@string/sign_up"
                 android:textAllCaps="false"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:flow_horizontalAlign="center"
                 app:flow_verticalAlign="center"
-                tools:ignore="UsingOnClickInXml" />
+                 />
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
