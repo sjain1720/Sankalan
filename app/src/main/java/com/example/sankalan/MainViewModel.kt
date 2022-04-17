@@ -56,6 +56,10 @@ class MainViewModel():ViewModel() {
         databaseUser.addValueEventListener(postListener)
     }
 
+    fun logout(){
+        Firebase.auth.signOut()
+    }
+
 
     private val eventList: MutableLiveData<ArrayList<Events>> by lazy {
         MutableLiveData<ArrayList<Events>>().also {
