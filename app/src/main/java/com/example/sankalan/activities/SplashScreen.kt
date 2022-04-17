@@ -1,6 +1,7 @@
 package com.example.sankalan.activities
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -18,6 +19,17 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+
+
+        val animRotatorOne = AnimationUtils.loadAnimation(this,R.anim.rotator_one)
+        val animRotatorTwo = AnimationUtils.loadAnimation(this,R.anim.rotator_two)
+        val animRotatorThree = AnimationUtils.loadAnimation(this,R.anim.rotator_three)
+        val animRotatorFour = AnimationUtils.loadAnimation(this,R.anim.rotator_four)
+
+        findViewById<ImageView>(R.id.rotator_one_iv).startAnimation(animRotatorOne)
+        findViewById<ImageView>(R.id.rotator_two_iv).startAnimation(animRotatorTwo)
+        findViewById<ImageView>(R.id.rotator_three_iv).startAnimation(animRotatorThree)
+        findViewById<ImageView>(R.id.rotator_four_iv).startAnimation(animRotatorFour)
 
         val handler = Handler()
         handler.postDelayed(Runnable {
