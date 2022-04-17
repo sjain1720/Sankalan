@@ -44,7 +44,8 @@ class SplashScreen : AppCompatActivity() {
                 ignored.printStackTrace()
             }
 
-        }, 5000)
+        }, 2000)
+        // TODO: change the time
 
     }
 

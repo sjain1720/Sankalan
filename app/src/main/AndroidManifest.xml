@@ -21,6 +21,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activities.DrawerActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Transparent" />
+        <activity
             android:name=".activities.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"
